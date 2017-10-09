@@ -1,0 +1,65 @@
+{
+  "name": "RecipeBox",
+  "version": "0.0.0",
+  "server": false,
+  "private": true,
+  "scripts": {
+    "clean": "rm -rf ./dist",
+    "build": "npm run clean && NODE_ENV=production webpack && gulp prod",
+    "postinstall": "npm run build"
+  },
+  "dependencies": {
+    "bluebird": "latest",
+    "body-parser": "latest",
+    "cheerio": "latest",
+    "cookie-parser": "latest",
+    "debug": "latest",
+    "dotenv": "latest",
+    "file-loader": "latest",
+    "firebase": "latest",
+    "moment": "latest",
+    "react": "latest",
+    "react-bootstrap": "latest",
+    "react-dom": "latest",
+    "react-dropzone": "latest",
+    "react-redux": "latest",
+    "react-time": "latest",
+    "redux": "latest",
+    "redux-thunk": "latest",
+    "stripe": "latest",
+    "superagent": "latest",
+    "turbo360": "latest",
+    "uuid": "^3.1.0",
+    "webpack": "latest"
+  },
+  "devDependencies": {
+    "babel-core": "latest",
+    "babel-loader": "latest",
+    "babel-preset-es2015": "latest",
+    "babel-preset-react": "latest",
+    "json-loader": "latest",
+    "gulp": "latest",
+    "gulp-autoprefixer": "latest",
+    "gulp-6to5": "latest",
+    "gulp-concat": "latest",
+    "gulp-less": "latest",
+    "gulp-minify-css": "latest",
+    "gulp-rename": "latest",
+    "gulp-uglify": "latest",
+    "chai": "latest",
+    "chai-http": "latest",
+    "nodemon": "latest",
+    "mocha": "latest",
+    "mocha-jscs": "latest",
+    "mocha-jshint": "latest",
+    "rimraf": "latest"
+  },
+  "functions": {
+    "turbo360": "latest"
+  },
+  "deploy": [
+    "index.html",
+    "dist"
+  ],
+  "app": "59dbb5c29caba80012e3c468"
+}
