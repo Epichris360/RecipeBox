@@ -1,17 +1,19 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { v4 } from 'uuid'
+let Un = ['kg','oz','lbs','cups','grams','liters','quarts']
 class RecipeNew extends Component{
     constructor(props){
         super(props)
         this.state = {
             title:'',
-            ingredients:[{id:v4(), name:'', qty:'',unit:''}]
+            units:Un,
+            ingredients:[{id:v4(), name:'', qty:'',unit:Un[0]}]
         }
     }
     addInput(){
         const { ingredients} = this.state
-        ingredients.push({id:v4(), name:'', qty:'',unit:''})
+        ingredients.push({id:v4(), name:'', qty:'',unit:this.state.units[0]})
         this.setState(ingredients)
     }
     updateIngredients(e,id,which){
@@ -54,10 +56,13 @@ class RecipeNew extends Component{
                                     Name: <input type="text" onChange={ e => this.updateIngredients(e,ing.id,'name')}/>
                                     Qty: <input type="number" onChange={ e => this.updateIngredients(e,ing.id,'qty')}/>
                                     <select onChange={e => this.updateIngredients(e,ing.id,'unit')}>
-                                        <option value="kg">Kg</option>
-                                        <option value="oz">Oz</option>
-                                        <option value="lbs">Lbs</option>
-                                        <option value="cups">Cups</option>
+                                        {
+                                            this.state.units.map((u,i) => {
+                                                return(
+                                                    <option key={i} value="{u}">{u}</option>
+                                                )
+                                            })
+                                        }
                                     </select>
                                     <br/><br/>
                                 </div>
