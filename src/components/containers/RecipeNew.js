@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { v4 } from 'uuid'
-let Un = ['kg','oz','lbs','cups','grams','liters','quarts']
+import actions from '../../actions'
+
+let Un = ['kg','oz','lbs','cups','grams','liters','quarts','unit','package','tb','tsp']
 class RecipeNew extends Component{
     constructor(props){
         super(props)
@@ -32,6 +34,13 @@ class RecipeNew extends Component{
             title:this.state.title,
             ingredients:this.state.ingredients
         }
+        this.props.newRecipe(recipe)
+        .then(data => {
+            console.log('data!', data)
+        })
+        .catch(err => {
+            throw err
+        })
         console.log('recipe',recipe)
     }
     render(){
@@ -79,4 +88,10 @@ class RecipeNew extends Component{
     }
 }
 
-export default RecipeNew
+const dispatchToProps = dispatch => {
+    return{
+        newRecipe: params => dispatch(actions.newRecipe(params))
+    }
+}
+
+export default connect(null,dispatchToProps)(RecipeNew)

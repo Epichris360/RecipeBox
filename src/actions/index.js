@@ -39,6 +39,12 @@ export default {
 		return dispatch => {
 			return dispatch(TurboClient.currentUser(constants.CURRENT_USER_RECEIVED))
 		}
+	},
+
+	newRecipe:(params) => {
+		return dispatch => {
+			return dispatch(TurboClient.postRequest('recipe',params,constants.NEW_RECIPE))
+		}
 	}
 	
 }
