@@ -123,7 +123,7 @@ class RecipeNew extends Component{
                                         {
                                             this.state.timeUnits.map((u,i) => {
                                                 return(
-                                                    <option key={i} value="{u}">{u}</option>
+                                                    <option key={i} value={u}>{u}</option>
                                                 )
                                             })
                                         }

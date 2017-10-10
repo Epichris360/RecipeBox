@@ -9,9 +9,10 @@ import Users      from './Users'
 import RecipeNew  from './RecipeNew'
 import RecipeList from './RecipeList'
 import NavBar     from './NavBar'
+import RecipeShow from './RecipeShow'
 
 export {
 
-	Users, RecipeNew, RecipeList, NavBar
+	Users, RecipeNew, RecipeList, NavBar, RecipeShow
 	
 }

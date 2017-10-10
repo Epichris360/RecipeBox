@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import actions from '../../actions'
+import { Link }             from 'react-router-dom'
 
 class RecipeList extends Component{
 
@@ -36,9 +37,10 @@ class RecipeList extends Component{
                                 <ul>
                                     {
                                         this.props.recipes.map( (r,i) => {
+                                            console.log('r',r.id)
                                             return(
                                                 <div key={i}>
-                                                    <h4>{r.title}</h4>
+                                                    <Link to={`/recipe/${r.id}`}>{r.title}</Link>
                                                 </div>
                                             )
                                         })
@@ -46,6 +48,9 @@ class RecipeList extends Component{
                                 </ul>
                         </div>
                 }
+                <button onClick={ () => console.log(this.props.recipes) }>
+                    this.props.recipes
+                </button>
             </div>
         )
     }
