@@ -45,6 +45,12 @@ export default {
 		return dispatch => {
 			return dispatch(TurboClient.postRequest('recipe',params,constants.NEW_RECIPE))
 		}
+	},
+
+	allRecipes:() => {
+		return dispatch => {
+			return dispatch(TurboClient.getRequest('recipe',null,constants.ALL_RECIPES))
+		}
 	}
 	
 }

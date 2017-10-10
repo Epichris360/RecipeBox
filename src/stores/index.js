@@ -16,7 +16,7 @@ export default {
 		
 		const reducers = combineReducers({ // insert reducers here
 			user: userReducer,
-			recipies: recipeReducer
+			recipes: recipeReducer
 		})
 
 		if (initialState){

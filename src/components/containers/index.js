@@ -5,10 +5,13 @@
 * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 */
 
-import Users     from './Users'
-import RecipeNew from './RecipeNew'
+import Users      from './Users'
+import RecipeNew  from './RecipeNew'
+import RecipeList from './RecipeList'
+import NavBar     from './NavBar'
+
 export {
 
-	Users, RecipeNew
+	Users, RecipeNew, RecipeList, NavBar
 	
 }

@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom'
 import store from './stores'
 import { Provider } from 'react-redux'
 //import Intro from './components/presentation/Intro'
-import { RecipeNew } from './components/containers'
+import { RecipeNew, RecipeList, NavBar } from './components/containers'
+import { Switch, BrowserRouter as Router, Route  } from 'react-router-dom'
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * *
 	This is the entry point of the React app wit Redux
@@ -16,9 +17,17 @@ import { RecipeNew } from './components/containers'
  
 const app = (
 	<Provider store={store.configure(null)}>
-		<div className="container">
-			<RecipeNew />
-		</div>
+		<Router>
+			<div>
+				<NavBar />
+				<div className="container">
+					<Switch>
+						<Route exact path='/' component={RecipeList} />
+						<Route path="/new" component={RecipeNew} />
+					</Switch>
+				</div>
+			</div>
+		</Router>
 	</Provider>
 )
 

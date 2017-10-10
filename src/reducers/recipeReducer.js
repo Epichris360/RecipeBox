@@ -7,14 +7,15 @@ import constants from '../constants'
 * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 */
 
-var initialState = [
-]
+var initialState = []
 
 export default (state = initialState, action) => {
 	let newState = state
 
 	switch (action.type) {
-
+		case constants.ALL_RECIPES:
+			return [...action.data]
+			
         case constants.NEW_RECIPE:
             newState.push(action.data)
             return newState
@@ -22,4 +23,4 @@ export default (state = initialState, action) => {
 		default:
 			return state
 	}
-}
+} 
