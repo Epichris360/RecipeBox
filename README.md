@@ -2,6 +2,12 @@
 
 This project was built with Turbo 360. To learn more, click here: https://www.turbo360.co
 
+# To-Do
+Add a Template to Make This Look Nicer
+Add User signin/up
+Add Images for Each Recipe
+Comments Section per Recipe
+
 ## Instructions
 After cloning into repo, cd to project root directory and run npm install:
 
