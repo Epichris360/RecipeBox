@@ -28,7 +28,7 @@ const getRequest = (resource, params, actionType) => {
 					params: params, // can be null
 					data: data
 				})
-			}
+			} 
 			
 			return data
 		})

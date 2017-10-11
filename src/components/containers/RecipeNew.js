@@ -133,7 +133,8 @@ class RecipeNew extends Component{
                             )
                         })
                     }
-
+                    <br/>
+                    <input type="file" name="Picture!" id="btn-upload"/>
                     <br/><br/>
                     <button className="btn btn-success" onClick={ this.createRecipe.bind(this) }>
                         Submit!
