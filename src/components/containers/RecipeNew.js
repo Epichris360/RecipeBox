@@ -134,7 +134,7 @@ class RecipeNew extends Component{
                         })
                     }
                     <br/>
-                    <button id="btn-upload">Upload</button>
+                    <button id="btn-upload" className="btn btn-primary">Upload</button>
                     <br/><br/>
                     <button className="btn btn-success" onClick={ this.createRecipe.bind(this) }>
                         Submit!

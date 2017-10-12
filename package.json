@@ -17,6 +17,7 @@
     "dotenv": "latest",
     "file-loader": "latest",
     "firebase": "latest",
+    "gulp-sourcemaps": "^2.6.1",
     "moment": "latest",
     "react": "latest",
     "react-bootstrap": "latest",

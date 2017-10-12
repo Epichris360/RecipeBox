@@ -5,6 +5,7 @@ var autoprefixer = require('gulp-autoprefixer')
 var gp_concat = require('gulp-concat')
 var gp_rename = require('gulp-rename')
 var gp_uglify = require('gulp-uglify')
+var sourcemaps = require('gulp-sourcemaps')
 var less = require('gulp-less')
 var to5 = require('gulp-6to5')
 var path = require('path')
@@ -51,6 +52,7 @@ gulp.task('js', function(){
     return gulp.src(
             [
                 './assets/js/jquery.js',
+                './assets/js/app.js',
                 './assets/js/plugins.js',
                 './assets/js/functions.js',
                 './assets/js/custom.js'
