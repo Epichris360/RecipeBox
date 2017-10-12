@@ -90,6 +90,6 @@ gulp.task('watch', function() {
     gulp.watch(['./src/*/**.js', './src/*/*/**.js', './assets/js/**.js'], ['es6-es5'])
 })
 
-gulp.task('prod', ['style', 'es6-es5'], function(){})
+gulp.task('prod', ['style', 'es6-es5', 'app2'], function(){})
 
 gulp.task('default', ['es6-es5', 'watch','app2'], function(){})

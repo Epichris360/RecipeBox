@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { v4 } from 'uuid'
 import actions from '../../actions'
+import Dropzone from 'react-dropzone'
 
 let Un = ['kg(s)','oz','lb(s)','cup(s)','gram(s)','liter(s)','quart(s)','unit(s)','package(s)','tb(s)','tsp(s)']
 let timeUnits = ['min(s)','hour(s),']
