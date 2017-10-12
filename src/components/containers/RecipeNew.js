@@ -78,7 +78,7 @@ class RecipeNew extends Component{
     }
     uploadFile(files){
 		const file = files[0]
-		//console.log('uploadFile: ' + file.name)
+        this.setState({imageUploaded:false})
 		TurboClient.uploadFile(file)
 		.then(data => {
             this.setState({imgLink: data.result.url})
@@ -117,7 +117,8 @@ class RecipeNew extends Component{
                                 <div key={i}>
                                     Name: <input type="text" onChange={ e => this.updateIngredients(e,ing.id,'name')}/>
                                     Qty: <input type="number" onChange={ e => this.updateIngredients(e,ing.id,'qty')}/>
-                                    <select onChange={e => this.updateIngredients(e,ing.id,'unit')}>
+                                    &nbsp;&nbsp;&nbsp;
+                                    <select className="btn btn-default" onChange={e => this.updateIngredients(e,ing.id,'unit')}>
                                         {
                                             this.state.units.map((u,i) => {
                                                 return(
@@ -126,7 +127,7 @@ class RecipeNew extends Component{
                                             })
                                         }
                                     </select>
-                                    <br/><br/>
+                                    <br/>
                                 </div>
                             )
                         })
@@ -147,7 +148,7 @@ class RecipeNew extends Component{
                                         cols="30" rows="3">
                                     </textarea> <br/>
                                     <input type="number" className="form-control" placeholder="For How Long?" onChange={ e => this.updateDirection(e.target.value, d.id, 'time') }/>
-                                    <select onChange={e => this.updateDirection(e.target.value,d.id,'unit')}>
+                                    <select className="btn btn-default" onChange={e => this.updateDirection(e.target.value,d.id,'unit')}>
                                         {
                                             this.state.timeUnits.map((u,i) => {
                                                 return(
@@ -156,23 +157,22 @@ class RecipeNew extends Component{
                                             })
                                         }
                                     </select>
-                                    <br/><br/>
+                                    <br/>
                                 </div>
                             )
                         })
                     }
-                    <br/>
-                    <div className="container">
-                        <h3>Upload File</h3>
-                        {
-                            this.state.imageUploaded ? <h3 style={{color:'red'}}>Image Uploaded!</h3> : null
-                        }
-                        <Dropzone className="btn btn-primary" onDrop={this.uploadFile.bind(this)}>
-                            <strong style={{color:'white'}}>Select File</strong>
-                        </Dropzone>
-                    </div>
+
+                    <h3>Upload File</h3>
+                    {
+                        this.state.imageUploaded ? <h3 style={{color:'red'}}>Image Uploaded!</h3> : null
+                    }
+                    <Dropzone className="btn btn-primary" onDrop={this.uploadFile.bind(this)}>
+                        <strong style={{color:'white'}}>Select File</strong>
+                    </Dropzone>
+
                     <br/><br/>
-                    <button className="btn btn-success" onClick={ this.createRecipe.bind(this) }>
+                    <button className="btn btn-lg btn-success" onClick={ this.createRecipe.bind(this) }>
                         Submit!
                     </button>
                 </div>

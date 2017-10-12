@@ -31,7 +31,8 @@ gulp.task('css', ['less'], function(){
                 './assets/css/responsive.css',
                 './assets/css/custom.css',
                 './assets/css/font-awesome.min.css',
-                './assets/css/main.css'
+                './assets/css/main.css',
+                './assets/css/app.css'
             ]
         )
         .pipe(minifyCSS())
