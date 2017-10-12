@@ -12,6 +12,7 @@ class RecipeNew extends Component{
             title:'',
             units:Un,
             timeUnits:timeUnits,
+            description:'',
             ingredients:[{id:v4(), name:'', qty:'',unit:Un[0]}],
             directions:[{id:v4(),text:'',time:'',unit:timeUnits[0]}]
         }
@@ -36,6 +37,7 @@ class RecipeNew extends Component{
     createRecipe(){
         let recipe = {
             title: this.state.title,
+            description:this.state.description,
             ingredients: this.state.ingredients,
             directions: this.state.directions
         }
@@ -78,6 +80,14 @@ class RecipeNew extends Component{
                     placeholder="Recipes Name?"
                     onChange={ e => this.setState({title:e.target.value}) }
                 />
+                <br />
+                <textarea 
+                    className="form-control"
+                    placeholder="Got a Description?"
+                    onChange={ e => this.setState({description: e.target.value}) } 
+                    cols="30" rows="3">
+                </textarea>
+                <br />
                 <div>
                     <h3>Ingredients                        
                     <button onClick={this.addInput.bind(this)} className="btn btn-default">
