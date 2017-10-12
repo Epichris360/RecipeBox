@@ -5,7 +5,7 @@ var autoprefixer = require('gulp-autoprefixer')
 var gp_concat = require('gulp-concat')
 var gp_rename = require('gulp-rename')
 var gp_uglify = require('gulp-uglify')
-var sourcemaps = require('gulp-sourcemaps')
+//var sourcemaps = require('gulp-sourcemaps')
 var less = require('gulp-less')
 var to5 = require('gulp-6to5')
 var path = require('path')
@@ -52,7 +52,6 @@ gulp.task('js', function(){
     return gulp.src(
             [
                 './assets/js/jquery.js',
-                './assets/js/app.js',
                 './assets/js/plugins.js',
                 './assets/js/functions.js',
                 './assets/js/custom.js'
@@ -63,6 +62,18 @@ gulp.task('js', function(){
         .pipe(gp_rename('vendor.min.js'))
         .pipe(gp_uglify())
         .pipe(gulp.dest('./dist/js/'))
+});
+
+gulp.task('app2', function(){
+    return gulp.src(
+        [
+            './assets/js/app.js'
+        ]
+    )
+    .pipe(gulp.dest('./dist/app/'))
+    .pipe(gp_rename('app2.min.js'))
+    .pipe(gp_uglify())
+    .pipe(gulp.dest('./dist/app/'))
 });
 
 gulp.task('es6-es5', ['js'], function(){
@@ -81,4 +92,4 @@ gulp.task('watch', function() {
 
 gulp.task('prod', ['style', 'es6-es5'], function(){})
 
-gulp.task('default', ['es6-es5', 'watch'], function(){})
+gulp.task('default', ['es6-es5', 'watch','app2'], function(){})
