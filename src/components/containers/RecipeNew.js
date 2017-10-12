@@ -76,6 +76,17 @@ class RecipeNew extends Component{
         this.setState({directions})
         
     }
+    deleteElement(id, type){
+        if(type == 'ingredient'){
+            let ingredients = this.state.ingredients.filter( i => {return i.id != id} )
+            this.setState({ingredients})
+        }else{
+            let directions = this.state.directions.filter( d => {return d.id != id} )
+            this.setState({directions})
+        }  
+
+        
+    }
     uploadFile(files){
 		const file = files[0]
         this.setState({imageUploaded:false})
@@ -92,29 +103,29 @@ class RecipeNew extends Component{
         return(
             <div className="col-md-10 col-xs-12">
                 <h1>Create A New Recipe</h1>
-                <hr/>
                 <input type="text" 
                     className="form-control" 
                     placeholder="Recipes Name?"
                     onChange={ e => this.setState({title:e.target.value}) }
                 />
-                <br />
+                <div style={{padding:'5px'}}></div>
                 <textarea 
                     className="form-control"
                     placeholder="Got a Description?"
                     onChange={ e => this.setState({description: e.target.value}) } 
-                    cols="30" rows="3">
+                    cols="30" rows="3"
+                    >
                 </textarea>
-                <br />
+                <div style={{padding:'5px'}}></div>
                 <div>
-                    <h3>Ingredients                        
+                    <h3>Ingredients  &nbsp;                       
                     <button onClick={this.addInput.bind(this)} className="btn btn-default">
                         More Ingredients?
                     </button></h3>
                     {
                         this.state.ingredients.map((ing,i) => {
                             return(
-                                <div key={i}>
+                                <div key={i} style={{padding:'5px'}}>
                                     Name: <input type="text" onChange={ e => this.updateIngredients(e,ing.id,'name')}/>
                                     Qty: <input type="number" onChange={ e => this.updateIngredients(e,ing.id,'qty')}/>
                                     &nbsp;&nbsp;&nbsp;
@@ -126,27 +137,29 @@ class RecipeNew extends Component{
                                                 )
                                             })
                                         }
-                                    </select>
+                                    </select>&nbsp;
+                                    <button onClick={ () => this.deleteElement(ing.id,'ingredient') } className="btn btn-danger">X</button>
                                     <br/>
                                 </div>
                             )
                         })
                     }
-                    <br/>
-                    <h3>Directions
+                    <div style={{padding:'5px'}}></div>
+                    <h3>Directions &nbsp;
                     <button onClick={ () => this.addDirection() } className="btn btn-default">
                         More Directions?
                     </button></h3>
                     {
                         this.state.directions.map( (d,i) => {
                             return(
-                                <div key={i}>
+                                <div key={i} style={{padding:'5px'}}>
                                     <textarea 
                                         className="form-control"
                                         placeholder="what to do?"
                                         onChange={ e => this.updateDirection(e.target.value,d.id,'text') } 
                                         cols="30" rows="3">
-                                    </textarea> <br/>
+                                    </textarea>
+                                    <div style={{padding:'3px'}}></div>
                                     <input type="number" className="form-control" placeholder="For How Long?" onChange={ e => this.updateDirection(e.target.value, d.id, 'time') }/>
                                     <select className="btn btn-default" onChange={e => this.updateDirection(e.target.value,d.id,'unit')}>
                                         {
@@ -156,7 +169,8 @@ class RecipeNew extends Component{
                                                 )
                                             })
                                         }
-                                    </select>
+                                    </select>&nbsp;
+                                    <button onClick={ () => this.deleteElement(d.id,'direction') } className="btn btn-danger">X</button>
                                     <br/>
                                 </div>
                             )

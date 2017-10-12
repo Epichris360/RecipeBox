@@ -31,7 +31,6 @@ class RecipeList extends Component{
         var settings = { dots: true, infinite: true, speed: 1, autoplay:true, slidesToShow: 1, slidesToScroll: 1 };
         return(
             <div>
-                <h1>Recipe List!</h1>
                 <Slider {...settings}>
                     <div> <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?dpr=1&auto=compress,format&fit=crop&w=1200&h=&q=80&cs=tinysrgb&crop=" alt=""/> </div>
                     <div> <img src="https://images.unsplash.com/photo-1495214783159-3503fd1b572d?dpr=1&auto=compress,format&fit=crop&w=1200&h=&q=80&cs=tinysrgb&crop=" alt=""/> </div>
