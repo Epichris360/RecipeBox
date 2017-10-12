@@ -13,20 +13,21 @@ import { Switch, BrowserRouter as Router, Route  } from 'react-router-dom'
 	to remove it and replace with your own visual content.
 * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 */
- 
- 
+
 const app = (
 	<Provider store={store.configure(null)}>
 		<Router>
-			<div>
-				<NavBar />
-				<div className="container">
-					<Switch>
-						<Route exact path='/' component={RecipeList} />
-						<Route path="/new" component={RecipeNew} />
-						<Route path="/recipe/:id" component={RecipeShow}/>
-					</Switch>
-				</div>
+			<div >
+				<div >
+					<NavBar />
+					<div className="container">
+						<Switch>
+							<Route exact path='/' component={RecipeList} />
+							<Route path="/new" component={RecipeNew} />
+							<Route path="/recipe/:id" component={RecipeShow}/>
+						</Switch>
+					</div>
+				</div> 
 			</div>
 		</Router>
 	</Provider>

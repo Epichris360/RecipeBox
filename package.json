@@ -19,18 +19,20 @@
     "firebase": "latest",
     "gulp-sourcemaps": "^2.6.1",
     "moment": "latest",
+    "nuka-carousel": "^2.3.0",
     "react": "latest",
     "react-bootstrap": "latest",
     "react-dom": "latest",
     "react-dropzone": "^4.2.0",
     "react-redux": "latest",
     "react-router-dom": "^4.2.2",
+    "react-slick": "^0.15.4",
     "react-time": "latest",
     "redux": "latest",
     "redux-thunk": "latest",
     "stripe": "latest",
-    "superagent": "latest",
-    "turbo360": "latest",
+    "superagent": "^3.6.3",
+    "turbo360": "^1.4.49",
     "uuid": "^3.1.0",
     "webpack": "latest"
   },
@@ -57,7 +59,8 @@
     "rimraf": "latest"
   },
   "functions": {
-    "turbo360": "latest"
+    "turbo360": "latest",
+    "react-dropzone": "^4.2.0"
   },
   "deploy": [
     "index.html",

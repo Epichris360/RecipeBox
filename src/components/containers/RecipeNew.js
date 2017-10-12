@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { v4 } from 'uuid'
-import actions from '../../actions'
-import Dropzone from 'react-dropzone'
+import { connect }          from 'react-redux'
+import { v4 }               from 'uuid'
+import actions              from '../../actions'
+import { TurboClient }      from '../../utils'
+import Dropzone             from 'react-dropzone'
+import superagent           from 'superagent'
 
 let Un = ['kg(s)','oz','lb(s)','cup(s)','gram(s)','liter(s)','quart(s)','unit(s)','package(s)','tb(s)','tsp(s)']
 let timeUnits = ['min(s)','hour(s),']
@@ -15,7 +17,8 @@ class RecipeNew extends Component{
             timeUnits:timeUnits,
             description:'',
             ingredients:[{id:v4(), name:'', qty:'',unit:Un[0]}],
-            directions:[{id:v4(),text:'',time:'',unit:timeUnits[0]}]
+            directions:[{id:v4(),text:'',time:'',unit:timeUnits[0]}],
+            imgLink:'https://lh3.googleusercontent.com/jPSyeJliGwHCqZ9jV6Cz8R3fU9nIjwciZkaZSTH8dW3ZmlRCv730DfDA-nnkWm1fWg75m4-akZ0u-N6OpcTRsKnHUA'
         }
     }
     addInput(){
@@ -71,6 +74,17 @@ class RecipeNew extends Component{
         this.setState({directions})
         
     }
+    uploadFile(files){
+		const file = files[0]
+		//console.log('uploadFile: ' + file.name)
+		TurboClient.uploadFile(file)
+		.then(data => {
+            this.setState({imgLink: data.result.url})
+		})
+		.catch(err => {
+			console.log('upload ERROR: ' + err.message)
+		})
+	}
     render(){
         return(
             <div className="col-md-10 col-xs-12">
@@ -145,13 +159,15 @@ class RecipeNew extends Component{
                         })
                     }
                     <br/>
-                    <button id="btn-upload" className="btn btn-primary">Upload</button>
+                    <div className="container">
+                        <h3>Upload File</h3>
+                        <Dropzone className="btn btn-primary" onDrop={this.uploadFile.bind(this)}>
+                            <strong style={{color:'white'}}>Select File</strong>
+                        </Dropzone>
+                    </div>
                     <br/><br/>
                     <button className="btn btn-success" onClick={ this.createRecipe.bind(this) }>
                         Submit!
-                    </button>
-                    <button className="btn btn-default" onClick={ () => console.log(this.state) }>
-                        this.state
                     </button>
                 </div>
             </div>

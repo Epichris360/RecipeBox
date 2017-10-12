@@ -29,7 +29,9 @@ gulp.task('css', ['less'], function(){
                 './assets/css/animate.css',
                 './assets/css/magnific-popup.css',
                 './assets/css/responsive.css',
-                './assets/css/custom.css'
+                './assets/css/custom.css',
+                './assets/css/font-awesome.min.css',
+                './assets/css/main.css'
             ]
         )
         .pipe(minifyCSS())

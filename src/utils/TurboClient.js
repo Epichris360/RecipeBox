@@ -123,6 +123,10 @@ const currentUser = (actionType) => {
 		})
 }
 
+const uploadFile = (file) => {
+	return turbo({site_id:APP_ID}).uploadFile(file) // returns a Promise
+}
+
 export default {
 
 	getRequest: getRequest,
@@ -131,6 +135,7 @@ export default {
 	deleteRequest: deleteRequest,
 	createUser: createUser,
 	login: login,
-	currentUser: currentUser
+	currentUser: currentUser,
+	uploadFile: uploadFile
 
 }

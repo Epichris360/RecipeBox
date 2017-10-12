@@ -10,18 +10,19 @@ class NavBar extends Component{
     render(){
         return(
             <div>
-                <nav className="navbar navbar-default">
+                <br />
+                <nav className="container navbar navbar-default">
                     <div className="container-fluid">
                         <div className="navbar-header">
-                            <Link to="/" className="navbar-brand">ReactRecipe</Link>
+                            <Link to="/" className="navbar-brand"><h1 style={{color:'#ff4486'}}>ReactRecipe</h1></Link>
                         </div>
 
                         <ul className="nav navbar-nav">
-                            <li> <Link to="/new">New Recipe</Link> </li>                       
+                                               
                         </ul>
 
                         <ul className="nav navbar-nav navbar-right">
-
+                            <li><Link to="/new"><strong>New Recipe</strong></Link></li>
                         </ul>
 
                     </div>
