@@ -18,7 +18,8 @@ class RecipeNew extends Component{
             description:'',
             ingredients:[{id:v4(), name:'', qty:'',unit:Un[0]}],
             directions:[{id:v4(),text:'',time:'',unit:timeUnits[0]}],
-            imgLink:'https://lh3.googleusercontent.com/jPSyeJliGwHCqZ9jV6Cz8R3fU9nIjwciZkaZSTH8dW3ZmlRCv730DfDA-nnkWm1fWg75m4-akZ0u-N6OpcTRsKnHUA'
+            imgLink:'https://lh3.googleusercontent.com/jPSyeJliGwHCqZ9jV6Cz8R3fU9nIjwciZkaZSTH8dW3ZmlRCv730DfDA-nnkWm1fWg75m4-akZ0u-N6OpcTRsKnHUA',
+            imageUploaded: false
         }
     }
     addInput(){
@@ -42,6 +43,7 @@ class RecipeNew extends Component{
         let recipe = {
             title: this.state.title,
             description:this.state.description,
+            imgLink: this.state.imgLink,
             ingredients: this.state.ingredients,
             directions: this.state.directions
         }
@@ -80,6 +82,7 @@ class RecipeNew extends Component{
 		TurboClient.uploadFile(file)
 		.then(data => {
             this.setState({imgLink: data.result.url})
+            this.setState({imageUploaded:true})
 		})
 		.catch(err => {
 			console.log('upload ERROR: ' + err.message)
@@ -118,7 +121,7 @@ class RecipeNew extends Component{
                                         {
                                             this.state.units.map((u,i) => {
                                                 return(
-                                                    <option key={i} value="{u}">{u}</option>
+                                                    <option key={i} value={`${u}`}>{u}</option>
                                                 )
                                             })
                                         }
@@ -161,6 +164,9 @@ class RecipeNew extends Component{
                     <br/>
                     <div className="container">
                         <h3>Upload File</h3>
+                        {
+                            this.state.imageUploaded ? <h3 style={{color:'red'}}>Image Uploaded!</h3> : null
+                        }
                         <Dropzone className="btn btn-primary" onDrop={this.uploadFile.bind(this)}>
                             <strong style={{color:'white'}}>Select File</strong>
                         </Dropzone>

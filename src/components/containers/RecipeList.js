@@ -46,20 +46,21 @@ class RecipeList extends Component{
                                 <ul>
                                     {
                                         this.props.recipes.map( (r,i) => {
-                                            console.log('r',r.id)
+                                            //console.log('r',r.id)
                                             return(
-                                                <div key={i} className="row">
+                                                <div key={i} >
                                                     <div className="col-md-3 col-xs-3">
-                                                        <section className="box feature">
-                                                            <Link to={`/recipe/${r.id}`}><img src=""  alt=""/></Link>
-                                                            <div className="inner">
-                                                                <header>
-                                                                    <h2>{r.title}</h2>
-                                                                    <p>Maybe here as well I think</p>
-                                                                </header>
-                                                                <p>Phasellus quam turpis, feugiat sit amet in, hendrerit in lectus. Praesent sed semper amet bibendum tristique fringilla.</p>
-                                                            </div>
-                                                        </section>
+                                                        <Link to={`/recipe/${r.id}`}>
+                                                            <section className="box feature">
+                                                                <img src={r.imgLink} />
+                                                                <div className="inner">
+                                                                    <header>
+                                                                        <h2>{r.title}</h2>
+                                                                    </header>
+                                                                    {r.description}
+                                                                </div>
+                                                            </section>
+                                                        </Link>
                                                     </div>
                                                 </div>
                                             )
