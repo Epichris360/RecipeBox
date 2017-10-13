@@ -45,7 +45,9 @@ class RecipeNew extends Component{
             description:this.state.description,
             imgLink: this.state.imgLink,
             ingredients: this.state.ingredients,
-            directions: this.state.directions
+            directions: this.state.directions,
+            user_id: this.props.user.id,
+            username: this.props.user.username
         }
         this.props.newRecipe(recipe)
         .then(data => {
@@ -192,6 +194,13 @@ class RecipeNew extends Component{
                 </div>
             </div>
         )
+    }
+}
+
+const mapStateToProps = state => {
+    const { user } = state
+    return{
+        user
     }
 }
 

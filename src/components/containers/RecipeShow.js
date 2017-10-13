@@ -33,7 +33,7 @@ class RecipeShow extends Component{
     }
     submitCommment(){
         if(this.state.comment != ''){
-            turbo({site_id:APP_ID}).create('comments', { text:this.state.comment, recipe_id:this.state.recipe.id })
+            turbo({site_id:APP_ID}).create('comments', { text:this.state.comment, recipe_id:this.state.recipe.id, user_id: this.props.user.id, username: this.props.user.username })
             .then(data => {
                 let {comments} = this.state
                 comments.push(data)
@@ -91,24 +91,27 @@ class RecipeShow extends Component{
                 <div className="panel">
                     <h1 className="text-center" style={{padding:'10px'}}>Commments Section! </h1>
                 </div>
-
-                <div className="panel">
-                    <div style={{padding:'10px'}}>
-                        <textarea 
-                            className="form-control"
-                            placeholder="Do You Have A Comment???!"
-                            cols="30" rows="3"
-                            onChange={ e => this.setState({comment: e.target.value}) }
-                            value={this.state.comment}
-                        >
-                        </textarea>
-                        <button 
-                            className="pull-right btn btn-primary"
-                            onClick={ () => this.submitCommment() }
-                        ><strong style={{color:'white'}}>Submit!</strong></button>
-                        <br/>
-                    </div>
-                </div>
+                {
+                    this.props.user.id !== '' ? 
+                        <div className="panel">
+                            <div style={{padding:'10px'}}>
+                                <textarea 
+                                    className="form-control"
+                                    placeholder="Do You Have A Comment???!"
+                                    cols="30" rows="3"
+                                    onChange={ e => this.setState({comment: e.target.value}) }
+                                    value={this.state.comment}
+                                >
+                                </textarea>
+                                <button 
+                                    className="pull-right btn btn-primary"
+                                    onClick={ () => this.submitCommment() }
+                                ><strong style={{color:'white'}}>Submit!</strong></button>
+                                <br/>
+                            </div>
+                        </div> : null
+                }
+                
                 {
                     this.state.comments.map((c,i) => {
                         return(
@@ -128,9 +131,9 @@ class RecipeShow extends Component{
 }
 
 const mapStateToProps = state => {
-    const { recipes } = state
+    const { recipes, user } = state
     return{
-        recipes
+        recipes, user
     }
 }
 
