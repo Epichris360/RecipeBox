@@ -25,10 +25,26 @@ class RecipeList extends Component{
             this.setState({loading:false})
         }
     }
-    
+    recipeArraySplit(){
+        const X = 3
+        let newarr = []
+        this.props.recipes.reduce((ar, it, i) => { 
+            const ix = Math.floor(i/X); 
+
+            if(!ar[ix]) {
+                ar[ix] = [];
+            }
+
+            ar[ix].push(it);
+
+            return ar;
+        }, newarr)
+        return newarr
+    }
 
     render(){
-        var settings = { dots: true, infinite: true, speed: 1, autoplay:true, slidesToShow: 1, slidesToScroll: 1 };
+        const settings = { dots: true, infinite: true, speed: 1, autoplay:true, slidesToShow: 1, slidesToScroll: 1 };
+        const recipeSplit = this.recipeArraySplit()
         return(
             <div>
                 <Slider {...settings}>
@@ -42,30 +58,35 @@ class RecipeList extends Component{
                     this.state.loading ?
                         <h1>Loading.....</h1> :
                         <div>
-                                <ul>
-                                    {
-                                        this.props.recipes.map( (r,i) => {
-                                            //console.log('r',r.id)
-                                            return(
-                                                <div key={i} >
-                                                    <div className="col-md-3 col-xs-3">
-                                                        <Link to={`/recipe/${r.id}`}>
-                                                            <section className="box feature">
-                                                                <img src={r.imgLink} />
-                                                                <div className="inner">
-                                                                    <header>
-                                                                        <h2>{r.title}</h2>
-                                                                    </header>
-                                                                    {r.description}
+                            <br/>
+                            {
+                                recipeSplit.map( (row,i) => {
+                                    return(
+                                        <div key={i} className="row">
+                                            {
+                                                row.map((r,i) => {
+                                                    return(
+                                                        <div key={i} className="col-md-4 col-xs-4">
+                                                            <Link to={`/recipe/${r.id}`}>
+                                                                <div className="box feature" style={{ padding:'10px' }}>
+                                                                    <img src={r.imgLink} />
+                                                                    <div className="inner">
+                                                                        <header>
+                                                                            <h2>{r.title}</h2>
+                                                                        </header>
+                                                                        {r.description}
+                                                                    </div>
                                                                 </div>
-                                                            </section>
-                                                        </Link>
-                                                    </div>
-                                                </div>
-                                            )
-                                        })
-                                    }
-                                </ul>
+                                                            </Link>
+                                                        </div>
+                                                    )
+                                                })
+                                            }                                
+                                        </div>
+                                    )
+                                })
+                            }
+
                         </div>
                 }
             </div>
