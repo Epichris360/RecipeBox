@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom'
 import store from './stores'
 import { Provider } from 'react-redux'
 //import Intro from './components/presentation/Intro'
-import { RecipeNew, RecipeList, NavBar, RecipeShow } from './components/containers'
+import { RecipeNew, RecipeList, NavBar, RecipeShow,
+		 SignIn, SignUp } from './components/containers'
+
 import { Switch, BrowserRouter as Router, Route  } from 'react-router-dom'
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -25,6 +27,8 @@ const app = (
 							<Route exact path='/' component={RecipeList} />
 							<Route path="/new" component={RecipeNew} />
 							<Route path="/recipe/:id" component={RecipeShow}/>
+							<Route path="/signin" component={SignIn} />
+							<Route path="/signup" component={SignUp} />
 						</Switch>
 					</div>
 				</div> 

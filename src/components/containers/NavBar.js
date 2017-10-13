@@ -7,6 +7,10 @@ class NavBar extends Component{
     constructor(props){
         super(props)
     }
+    logout(){
+        this.props.logout()
+        this.props.history.push('/')
+    }
     render(){
         return(
             <div>
@@ -21,9 +25,18 @@ class NavBar extends Component{
                                                
                         </ul>
 
-                        <ul className="nav navbar-nav navbar-right">
-                            <li><Link to="/new"><strong>New Recipe</strong></Link></li>
-                        </ul>
+                        {
+                            this.props.user.id != ''  ? 
+                                <ul className="nav navbar-nav navbar-right">
+                                    <li><Link to="/new"><strong>New Recipe</strong></Link></li>
+                                    <li><Link to="" >Logout</Link></li>
+                                    <li><a>{`Hey there ${this.props.user.username}`}</a></li>
+                                </ul> : 
+                                <ul className="nav navbar-nav navbar-right">
+                                    <li> <Link to="/SignIn">SignIn</Link> </li>
+                                    <li><Link to="/SignUp">Signup</Link></li>
+                                </ul>
+                        }
 
                     </div>
                 </nav>
@@ -34,13 +47,14 @@ class NavBar extends Component{
 }
 
 const mapStateToProps = state => {
+    const { user } = state
     return {
-        
+        user
     }
 }
 const dispatchToProps = dispatch => {
     return{
-        
+        logout: () => dispatch(actions.logoutUser())
     }
 }
 export default connect(mapStateToProps,dispatchToProps)(NavBar)

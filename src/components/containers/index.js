@@ -10,9 +10,11 @@ import RecipeNew  from './RecipeNew'
 import RecipeList from './RecipeList'
 import NavBar     from './NavBar'
 import RecipeShow from './RecipeShow'
+import SignIn	  from './SignIn'
+import SignUp	  from './SignUp'
 
 export {
 
-	Users, RecipeNew, RecipeList, NavBar, RecipeShow
+	Users, RecipeNew, RecipeList, NavBar, RecipeShow, SignIn, SignUp
 	
 }
