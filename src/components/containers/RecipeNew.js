@@ -101,7 +101,7 @@ class RecipeNew extends Component{
 	}
     render(){
         return(
-            <div className="col-md-10 col-xs-12">
+            <div className="col-md-10 col-xs-10">
                 <h1>Create A New Recipe</h1>
                 <input type="text" 
                     className="form-control" 
@@ -152,7 +152,7 @@ class RecipeNew extends Component{
                     {
                         this.state.directions.map( (d,i) => {
                             return(
-                                <div key={i} style={{padding:'5px'}}>
+                                <div key={i} >
                                     <textarea 
                                         className="form-control"
                                         placeholder="what to do?"

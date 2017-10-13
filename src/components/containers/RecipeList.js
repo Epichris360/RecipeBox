@@ -66,9 +66,9 @@ class RecipeList extends Component{
                                             {
                                                 row.map((r,i) => {
                                                     return(
-                                                        <div key={i} className="col-md-4 col-xs-4">
+                                                        <div key={i} className="col-md-4 col-xs-6">
                                                             <Link to={`/recipe/${r.id}`}>
-                                                                <div className="box feature" style={{ padding:'10px' }}>
+                                                                <div className="panel" style={{ padding:'10px' }}>
                                                                     <img src={r.imgLink} />
                                                                     <div className="inner">
                                                                         <header>
