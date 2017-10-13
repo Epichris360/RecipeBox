@@ -152,7 +152,7 @@ class RecipeNew extends Component{
                     {
                         this.state.directions.map( (d,i) => {
                             return(
-                                <div key={i} >
+                                <div key={i} style={{padding:'10px'}} >
                                     <textarea 
                                         className="form-control"
                                         placeholder="what to do?"

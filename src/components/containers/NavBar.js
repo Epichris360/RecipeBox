@@ -14,7 +14,7 @@ class NavBar extends Component{
                 <nav className="container navbar navbar-default">
                     <div className="container-fluid">
                         <div className="navbar-header">
-                            <Link to="/" className="navbar-brand"><h1 style={{color:'#ff4486'}}>ReactRecipe</h1></Link>
+                            <Link to="/" className="navbar-brand"><h1 style={{color:'#ff4486'}}>RecipeBox</h1></Link>
                         </div>
 
                         <ul className="nav navbar-nav">
