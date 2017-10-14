@@ -12,9 +12,11 @@ import NavBar     from './NavBar'
 import RecipeShow from './RecipeShow'
 import SignIn	  from './SignIn'
 import SignUp	  from './SignUp'
+import Admin	  from './Admin'
+import RecipeEdit from './RecipeEdit'
 
 export {
 
-	Users, RecipeNew, RecipeList, NavBar, RecipeShow, SignIn, SignUp
+	Users, RecipeNew, RecipeList, NavBar, RecipeShow, SignIn, SignUp, Admin, RecipeEdit
 	
 }

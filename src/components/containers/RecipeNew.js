@@ -51,7 +51,7 @@ class RecipeNew extends Component{
         }
         this.props.newRecipe(recipe)
         .then(data => {
-            console.log('data!', data)
+            //console.log('data!', data)
             this.props.history.push('/')
         })
         .catch(err => {
@@ -85,9 +85,7 @@ class RecipeNew extends Component{
         }else{
             let directions = this.state.directions.filter( d => {return d.id != id} )
             this.setState({directions})
-        }  
-
-        
+        }   
     }
     uploadFile(files){
 		const file = files[0]

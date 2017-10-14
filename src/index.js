@@ -4,7 +4,7 @@ import store from './stores'
 import { Provider } from 'react-redux'
 //import Intro from './components/presentation/Intro'
 import { RecipeNew, RecipeList, NavBar, RecipeShow,
-		 SignIn, SignUp } from './components/containers'
+		 SignIn, SignUp, RecipeEdit, Admin } from './components/containers'
 
 import { Switch, BrowserRouter as Router, Route  } from 'react-router-dom'
 
@@ -26,9 +26,10 @@ const app = (
 						<Switch>
 							<Route exact path='/' component={RecipeList} />
 							<Route path="/new" component={RecipeNew} />
-							<Route path="/recipe/:id" component={RecipeShow}/>
+							<Route exact path="/recipe/:id" component={RecipeShow}/>
 							<Route path="/signin" component={SignIn} />
 							<Route path="/signup" component={SignUp} />
+							<Route path="/recipe/:id/edit" component={RecipeEdit}/>
 						</Switch>
 					</div>
 				</div> 

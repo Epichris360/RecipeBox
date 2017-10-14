@@ -72,9 +72,9 @@ class RecipeList extends Component{
                                                                     <img src={r.imgLink} />
                                                                     <div className="inner">
                                                                         <header>
-                                                                            <h2>{r.title}</h2>
+                                                                            <h4>{r.title}</h4>
                                                                         </header>
-                                                                        {r.description}
+                                                                        {r.description.substr(0,100)+'...'}
                                                                     </div>
                                                                 </div>
                                                             </Link>

@@ -3,6 +3,7 @@ import { connect }         from'react-redux'
 import turbo               from 'turbo360'
 import pkg                 from '../../../package.json'
 import actions             from '../../actions'
+import { Link }            from 'react-router-dom'
 const APP_ID = pkg.app || ''
 
 class RecipeShow extends Component{
@@ -17,7 +18,7 @@ class RecipeShow extends Component{
     }
     componentDidMount(){
         const recipe = this.props.recipes.filter(r => r.id == this.props.match.params.id)[0]
-        console.log('recipe',recipe)
+        //console.log('recipe',recipe)
         this.setState({recipe})
         this.setState({loading:false})
 
@@ -55,10 +56,21 @@ class RecipeShow extends Component{
                         <h1>Loading....</h1>:
                         <div>
                             <div className="panel">
-                                <img src={recipe.imgLink} style={{padding:'10px', display:'inline-block', verticalAlign: 'middle' }} />
+                                <img src={`${recipe.imgLink}=s300`} style={{padding:'10px', display:'inline-block', verticalAlign: 'middle' }} />
                                 <div style={{padding:'20px', display:'inline-block', verticalAlign: 'middle'}}>
                                     <h2>{recipe.title}</h2>
                                     {recipe.description}
+                                    <br />
+                                    <strong>{`by ${recipe.username}`}</strong>
+                                    {
+                                        //{recipe.user_id == this.props.user.id}
+                                        true ?
+                                            <div>
+                                                <Link to={`/recipe/${recipe.id}/edit`} className="btn btn-default">Edit</Link>
+                                                &nbsp;&nbsp;
+                                                <button className="btn btn-danger">Delete</button>
+                                            </div> : null
+                                    }
                                 </div>
                             </div>
                             <h3>Ingredients</h3>
@@ -119,7 +131,7 @@ class RecipeShow extends Component{
                                 <div style={{ padding: '10px' }}>
                                     {c.text}
                                     <br/>
-                                    <strong>Insert UserName</strong>
+                                    <strong>{c.username}</strong>
                                 </div>
                             </div>
                         )

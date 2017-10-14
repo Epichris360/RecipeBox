@@ -20,7 +20,25 @@ export default (state = initialState, action) => {
             newState.push(action.data)
             return newState
 
+		case constants.UPDATE_RECIPE:
+			return state.map(
+				r => recipe(r,action)
+			)
+
 		default:
 			return state
 	}
 } 
+
+const recipe = ( state = {}, action ) =>{
+
+    switch (action.type) {
+
+        case constants.UPDATE_RECIPE:
+            return ( state.id == action.data.id ) ?
+				action.data : state
+				
+        default:
+            return state
+    }
+}
