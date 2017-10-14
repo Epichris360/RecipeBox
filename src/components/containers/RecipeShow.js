@@ -63,8 +63,7 @@ class RecipeShow extends Component{
                                     <br />
                                     <strong>{`by ${recipe.username}`}</strong>
                                     {
-                                        //{recipe.user_id == this.props.user.id}
-                                        true ?
+                                        recipe.user_id == this.props.user.id ?
                                             <div>
                                                 <Link to={`/recipe/${recipe.id}/edit`} className="btn btn-default">Edit</Link>
                                                 &nbsp;&nbsp;
@@ -79,7 +78,7 @@ class RecipeShow extends Component{
                                     {
                                         recipe.ingredients.map( (ing, i) => {
                                             return(
-                                                <li key={i}>{`${i+1}- ${ing.name}  ${ing.qty} ${ing.unit}`}</li>
+                                                <li key={i}>{`${i+1}- ${ing.name} - ${ing.qty} ${ing.unit}`}</li>
                                             )
                                         })
                                     }

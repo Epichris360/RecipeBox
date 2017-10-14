@@ -22,7 +22,8 @@ class RecipeEdit extends Component{
         this.setState({loading:false})
     }
     updateRecipe(){
-        console.log('hi there')
+        //console.log('hi there')
+        const { recipeOrg, recipe } = this.state
         this.props.updateRecipe(recipeOrg, recipe)
         .then(data => {
             this.props.history.push('/')
@@ -37,6 +38,7 @@ class RecipeEdit extends Component{
         this.setState({recipe})
     }
     updateIngredients(val,id ,which){
+        //console.log('val, id, which', val, id, which)
         let ingredients = this.state.recipe.ingredients.map((ing) => {
             return(
                 ing.id == id ? this.updateIngDir(ing, which, val) : ing
@@ -47,16 +49,16 @@ class RecipeEdit extends Component{
         this.setState({recipe})
     }
     updateDirection(val,id,which){
-        let directions = this.state.recipe.ingredients.map( (dir) => {
+        let directions = this.state.recipe.directions.map( (dir) => {
             return(
-                dir.id == id ? this.updateIngDir(ing, which, val) : dir
+                dir.id == id ? this.updateIngDir(dir, which, val) : dir
             )
         })
         let { recipe } = this.state
         recipe['directions'] = directions
         this.setState({recipe})
     }
-    updateIngDir(resouce,which,val){
+    updateIngDir(resource,which,val){
         resource[which] = val
         return resource
     }
@@ -81,7 +83,7 @@ class RecipeEdit extends Component{
         
     }
     render(){
-        console.log('this.props.recipe', this.state.recipe)
+        //console.log('this.props.recipe', this.state.recipe)
         return(
             <div>
                 {
@@ -116,7 +118,7 @@ class RecipeEdit extends Component{
                                             Name: <input type="text" onChange={ e => this.updateIngredients(e,ing.id,'name')} value={ing.name}/>
                                             Qty: <input type="number" onChange={ e => this.updateIngredients(e,ing.id,'qty')} value={ing.qty}/>
                                             &nbsp;&nbsp;&nbsp;
-                                            <select className="btn btn-default" onChange={e => this.updateIngredients(e,ing.id,'unit')} value={ing.unit}>
+                                            <select className="btn btn-default" onChange={e => this.updateIngredients(e.target.value,ing.id,'unit')} value={ing.unit}>
                                                 {
                                                     
                                                     this.state.units.map((u,i) => {
