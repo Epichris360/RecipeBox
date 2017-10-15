@@ -35,6 +35,8 @@ class RecipeList extends Component{
             .catch(err => {
                 console.log('error' + err.message)
             })
+        }else{
+            this.setState({loadingCarousel:false})
         }
     }
     recipeArraySplit(){
@@ -107,6 +109,9 @@ class RecipeList extends Component{
 
                         </div>
                 }
+                <button onClick={ () => console.log('this.props.carousel',this.props.carousel) }>
+                    this.props.carousel
+                </button>
             </div>
         )
     }
