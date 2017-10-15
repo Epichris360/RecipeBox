@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux'
 import thunk from 'redux-thunk'
-import { userReducer, recipeReducer } from '../reducers'
+import { userReducer, recipeReducer, carouselReducer } from '../reducers'
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * *
 	This is a store with one reducer: userReducer. When 
@@ -16,7 +16,8 @@ export default {
 		
 		const reducers = combineReducers({ // insert reducers here
 			user: userReducer,
-			recipes: recipeReducer
+			recipes: recipeReducer,
+			carousel: carouselReducer
 		})
 
 		if (initialState){

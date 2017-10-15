@@ -9,7 +9,8 @@ class RecipeList extends Component{
     constructor(props){
         super(props)
         this.state = {
-            loading: true
+            loading: true,
+            images: []
         }
     }
     componentDidMount(){

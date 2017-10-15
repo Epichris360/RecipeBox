@@ -57,6 +57,12 @@ export default {
 		return dispatch => {
 			return dispatch(TurboClient.putRequest('recipe',orig,params,constants.UPDATE_RECIPE))
 		}
-	}
+	},
+	
+	newImg:(params) => {
+		return dispatch => {
+			return dispatch( TurboClient.getRequest('carousel',params, constants.NEW_CAROUSEL_IMG) )
+		}
+	} 
 	
 }

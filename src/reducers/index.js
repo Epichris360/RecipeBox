@@ -6,9 +6,10 @@
 
 import userReducer from './userReducer'
 import recipeReducer from './recipeReducer'
+import carouselReducer from './carouselReducer'
 
 export {
 	
-	userReducer, recipeReducer
+	userReducer, recipeReducer, carouselReducer
 	
 }

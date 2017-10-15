@@ -30,6 +30,7 @@ const app = (
 							<Route path="/signin" component={SignIn} />
 							<Route path="/signup" component={SignUp} />
 							<Route path="/recipe/:id/edit" component={RecipeEdit}/>
+							<Route path="/admin" component={Admin} />
 						</Switch>
 					</div>
 				</div> 

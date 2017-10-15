@@ -30,6 +30,10 @@ class NavBar extends Component{
                                 <ul className="nav navbar-nav navbar-right">
                                     <li><Link to="/new"><strong>New Recipe</strong></Link></li>
                                     <li><Link to="" >Logout</Link></li>
+                                    {
+                                        this.props.user.role == 'admin1'? 
+                                        <li><Link to="/admin">Admin Panel</Link></li> : null
+                                    }
                                     <li><a>{`Hey there ${this.props.user.username}`}</a></li>
                                 </ul> : 
                                 <ul className="nav navbar-nav navbar-right">
