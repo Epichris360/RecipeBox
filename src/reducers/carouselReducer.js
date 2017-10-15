@@ -22,7 +22,7 @@ export default (state = initialState, action) => {
 			return newState
 		
 		case constants.DELETE_CAROUSEL:
-			let newState = state.filter( c => c.id != action.data.id )
+			newState = state.filter( c => c.id != action.data.id )
 			return newState
 
 		default:
