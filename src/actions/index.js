@@ -59,10 +59,16 @@ export default {
 		}
 	},
 	
-	newImg:(params) => {
+	newCarouselImg:(params) => {
 		return dispatch => {
-			return dispatch( TurboClient.getRequest('carousel',params, constants.NEW_CAROUSEL_IMG) )
+			return dispatch( TurboClient.postRequest('carousel',params, constants.NEW_CAROUSEL_IMG) )
 		}
-	} 
+	},
+
+	allCarousel:() => {
+		return dispatch => {
+			return dispatch( TurboClient.getRequest('carousel',null,constants.ALL_CAROUSEL) )
+		}
+	}
 	
 }

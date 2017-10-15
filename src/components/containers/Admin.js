@@ -5,6 +5,7 @@ import actions              from '../../actions'
 import { TurboClient }      from '../../utils'
 import Dropzone             from 'react-dropzone'
 import superagent           from 'superagent'
+import Slider               from 'react-slick'
 
 class Admin extends Component{
     constructor(props){
@@ -35,26 +36,41 @@ class Admin extends Component{
             images.push(data.result.url)
             console.log('data',data)
             this.newImgFunc(data)
+            return data
         })
 		.catch(err => {
 			console.log('upload ERROR: ' + err.message)
         })
-        console.log('images',this.state.images)
     }
     newImgFunc(data){
         console.log('newImgFunc',data)
-        this.props.newImg({ imgUrl: data.result.url })
-        .then(data => {
-            console.log('data data',data)
+        this.props.newCarouselImg({ imgUrl: data.result.url })
+        .then(d => {
+            console.log('data data',d)
+            return d
         })
         .catch(err => {
             throw err
         })
     }
     render(){
+        const settings = { dots: true, infinite: true, speed: 1, autoplay:true, slidesToShow: 1, slidesToScroll: 1 }
+
         return(
             <div>
                 Admin Panel
+                <Slider {...settings}>
+                    {
+                        this.props.carousel.map( (c,i) => {
+                            return(
+                                <div key={i}> 
+                                    <img src={ `${c.imgUrl}=s300` }  alt=""/> 
+                                    <button className="btn btn-danger">Remove?</button>
+                                </div>
+                            )
+                        })
+                    }
+                </Slider> 
 
                 <br/>
                 <h1>Upload Images for the carousel</h1>
@@ -64,19 +80,23 @@ class Admin extends Component{
                 <Dropzone className="btn btn-primary" onDrop={this.uploadFiles.bind(this)}>
                     <strong style={{color:'white'}}>Select File</strong>
                 </Dropzone>
-                <br/>
-                <button onClick={ () => console.log('state',this.state) }>
-                    this.state
-                </button>
+
             </div>
         )
     }
 }
 
-const dispatchToProps = dispatch => {
+const mapStateToProps = state => {
+    const { carousel } = state
     return{
-        newImg: params => dispatch(actions.newImg(params))
+        carousel
     }
 }
 
-export default connect(null, dispatchToProps)(Admin)
+const dispatchToProps = dispatch => {
+    return{
+        newCarouselImg: params => dispatch(actions.newCarouselImg(params))
+    }
+}
+
+export default connect(mapStateToProps, dispatchToProps)(Admin)

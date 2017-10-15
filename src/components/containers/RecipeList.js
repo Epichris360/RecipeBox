@@ -10,6 +10,7 @@ class RecipeList extends Component{
         super(props)
         this.state = {
             loading: true,
+            loadingCarousel: true,
             images: []
         }
     }
@@ -20,10 +21,20 @@ class RecipeList extends Component{
                 this.setState({loading:false})
             })
             .catch(err => {
-                console.log('error'+err.message)
+                console.log('error' + err.message)
             })
         }else{
             this.setState({loading:false})
+        }
+
+        if(this.props.carousel.length == 0){
+            this.props.allCarousel()
+            .then(response => {
+                this.setState({loadingCarousel:false})
+            })
+            .catch(err => {
+                console.log('error' + err.message)
+            })
         }
     }
     recipeArraySplit(){
@@ -48,12 +59,18 @@ class RecipeList extends Component{
         const recipeSplit = this.recipeArraySplit()
         return(
             <div>
-                <Slider {...settings}>
-                    <div> <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?dpr=1&auto=compress,format&fit=crop&w=1200&h=&q=80&cs=tinysrgb&crop=" alt=""/> </div>
-                    <div> <img src="https://images.unsplash.com/photo-1495214783159-3503fd1b572d?dpr=1&auto=compress,format&fit=crop&w=1200&h=&q=80&cs=tinysrgb&crop=" alt=""/> </div>
-                    <div> <img src="https://images.unsplash.com/photo-1494390248081-4e521a5940db?dpr=1&auto=compress,format&fit=crop&w=1200&h=&q=80&cs=tinysrgb&crop=" alt=""/> </div>
-                    <div> <img src="https://images.unsplash.com/photo-1495214783159-3503fd1b572d?dpr=1&auto=compress,format&fit=crop&w=1200&h=&q=80&cs=tinysrgb&crop=" alt=""/> </div>
-                </Slider>
+                {
+                    this.state.loadingCarousel ? <h1>Loading.....</h1> :
+                    <Slider {...settings}>
+                        {
+                            this.props.carousel.map( (c,i) => {
+                                return(
+                                    <div key={i}> <img src={ `${c.imgUrl}=s1200` }  alt=""/> </div>
+                                )
+                            })
+                        }
+                    </Slider> 
+                }
                 <br/>
                 {
                     this.state.loading ?
@@ -96,15 +113,16 @@ class RecipeList extends Component{
 }
 
 const mapStateToProps = state => {
-    const { recipes } = state
+    const { recipes, carousel } = state
     return{
-        recipes
+        recipes, carousel
     }
 }
 
 const dispatchToProps = dispatch => {
     return{
-        allRecipes: () => dispatch(actions.allRecipes())
+        allRecipes: () => dispatch(actions.allRecipes()),
+        allCarousel: () => dispatch(actions.allCarousel())
     }
 }
 

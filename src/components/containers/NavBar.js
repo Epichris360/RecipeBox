@@ -31,7 +31,7 @@ class NavBar extends Component{
                                     <li><Link to="/new"><strong>New Recipe</strong></Link></li>
                                     <li><Link to="" >Logout</Link></li>
                                     {
-                                        this.props.user.role == 'admin1'? 
+                                        this.props.user.role == 'admin'? 
                                         <li><Link to="/admin">Admin Panel</Link></li> : null
                                     }
                                     <li><a>{`Hey there ${this.props.user.username}`}</a></li>
@@ -39,6 +39,7 @@ class NavBar extends Component{
                                 <ul className="nav navbar-nav navbar-right">
                                     <li> <Link to="/SignIn">SignIn</Link> </li>
                                     <li><Link to="/SignUp">Signup</Link></li>
+                                    <li><Link to="/admin">Admin Panel</Link></li>
                                 </ul>
                         }
 
