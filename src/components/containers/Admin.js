@@ -53,6 +53,15 @@ class Admin extends Component{
             throw err
         })
     }
+    deleteCarousel(c){
+        this.props.deleteCarousel(c)
+        .then(data => {
+            //console.log('deleteCarousel',data)
+        })
+        .catch(err => {
+            throw err
+        })
+    }
     render(){
         const settings = { dots: true, infinite: true, speed: 1, autoplay:true, slidesToShow: 1, slidesToScroll: 1 }
 
@@ -65,7 +74,10 @@ class Admin extends Component{
                             return(
                                 <div key={i}> 
                                     <img src={ `${c.imgUrl}=s300` }  alt=""/> 
-                                    <button className="btn btn-danger">Remove?</button>
+                                    <button 
+                                        className="btn btn-danger" 
+                                        onClick={ () => this.deleteCarousel(c) } 
+                                    >Remove?</button>
                                 </div>
                             )
                         })
@@ -95,7 +107,8 @@ const mapStateToProps = state => {
 
 const dispatchToProps = dispatch => {
     return{
-        newCarouselImg: params => dispatch(actions.newCarouselImg(params))
+        newCarouselImg: params => dispatch(actions.newCarouselImg(params)),
+        deleteCarousel: params => dispatch(actions.deleteCarousel(params))
     }
 }
 

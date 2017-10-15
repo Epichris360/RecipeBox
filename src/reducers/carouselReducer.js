@@ -10,16 +10,20 @@ import constants from '../constants'
 var initialState = []
 
 export default (state = initialState, action) => {
-	console.log('state',state,'action',action) 
+	//console.log('state',state,'action',action) 
+	let newState = state
 	switch (action.type) {
 		case constants.ALL_CAROUSEL:
 			console.log('action.data',action.data)
 			return action.data
 			
 		case constants.NEW_CAROUSEL_IMG:
-			let newState = state
             newState.push(action.data)
-            return newState
+			return newState
+		
+		case constants.DELETE_CAROUSEL:
+			let newState = state.filter( c => c.id != action.data.id )
+			return newState
 
 		default:
 			return state

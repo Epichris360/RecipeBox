@@ -69,6 +69,12 @@ export default {
 		return dispatch => {
 			return dispatch( TurboClient.getRequest('carousel',null,constants.ALL_CAROUSEL) )
 		}
+	},
+
+	deleteCarousel:(params) => {
+		return dispatch => {
+			return dispatch( TurboClient.deleteRequest('carousel', params, constants.DELETE_CAROUSEL) )
+		}
 	}
 	
 }
