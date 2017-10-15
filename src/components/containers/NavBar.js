@@ -39,7 +39,7 @@ class NavBar extends Component{
                                 <ul className="nav navbar-nav navbar-right">
                                     <li> <Link to="/SignIn">SignIn</Link> </li>
                                     <li><Link to="/SignUp">Signup</Link></li>
-                                    <li><Link to="/admin">Admin Panel</Link></li>
+
                                 </ul>
                         }
 
